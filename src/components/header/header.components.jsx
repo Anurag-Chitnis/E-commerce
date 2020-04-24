@@ -1,12 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+//Custom stylesheet for header component
 import './header.styles.scss';
-import {ReactComponent as Logo} from '../../assets/crown.svg'; 
-import {auth} from '../firebase/firebase-utils';
+//React router DOM
+import { Link } from 'react-router-dom';
+//HOF for connecting component with redux state 
 import {connect} from 'react-redux';
+//Firebase utility import
+import {auth} from '../firebase/firebase-utils'; 
+//Custom Components import 
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
-
+import {ReactComponent as Logo} from '../../assets/crown.svg'; 
+//Custom select with reselect library
+import {selectCartHidden} from '../../redux/cart/cart.selector';
+import {currentUserSelector} from '../../redux/user/user.selector';
+import {createStructuredSelector} from 'reselect';
 
 const Header = ({currentUser, hidden}) => (
     <div className="header">
@@ -34,11 +42,8 @@ const Header = ({currentUser, hidden}) => (
     </div>
 )
 
-const mapStateToProps = ({user: {currentUser}, cart: {hidden}}) => {
-    console.log("Header component")
-    return({
-        currentUser,
-        hidden
-    })
-}
+const mapStateToProps = state => createStructuredSelector({
+    currentUser: currentUserSelector,
+    hidden: selectCartHidden,
+})
 export default connect(mapStateToProps)(Header);
