@@ -16,6 +16,7 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const {collections} = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
       if (user) {
         const userRef = await createUserProfileDocument(user);
@@ -56,7 +57,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: currentUserSelector(state)
+  currentUser: currentUserSelector(state),
 })
 
 const mapDispatchToProps = dispatch => ({
