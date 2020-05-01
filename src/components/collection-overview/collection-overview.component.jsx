@@ -5,7 +5,6 @@ import {collectionForPreview} from '../../redux/shop/shop.selector';
 import {createStructuredSelector} from 'reselect';
 
 const CollectionOverview = ({collections}) => {
-    console.log("THIS IS OVERVIEW PAGE")
     return(
         <div className="collection-overview">
             <div className="collection-preview">
