@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import CollectionOverview from '../../components/collection-overview/collection-overview.component';
 import CollectionPage from '../collection/collection.components';
 import {Route, Switch} from 'react-router-dom';
