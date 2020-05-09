@@ -1,3 +1,8 @@
+export const setCurrentUser = user => ({
+    type: 'SET_CURRENT_USER',
+    payload: user
+})
+
 export const googleSignInStart = () => ({
     type: "GOOGLE_SIGN_IN_START"
 });
